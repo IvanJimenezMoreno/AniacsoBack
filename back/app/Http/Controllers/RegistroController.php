@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class UsuarioController extends Controller
+class RegistroController extends Controller
 {
     public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios,email',
             'contraseña' => 'required|min:8|confirmed',
-            'apodo' => 'required|string|unique:usuarios,apodo'
+            'apodo' => 'required|string|unique:usuarios,apodo',
+            'admin' => 'boolean'
         ]);
 
         if ($validator->fails()) {
@@ -27,14 +27,13 @@ class UsuarioController extends Controller
             ], 442);
         }
 
-
-
         Usuario::create([
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'email' => $request->email,
             'contraseña' => Hash::make($request->contraseña),
-            'apodo' => $request->apodo
+            'apodo' => $request->apodo,
+            'admin' => $request->admin
 
         ]);
 

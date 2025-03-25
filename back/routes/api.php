@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RegistroController;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/registro', [UsuarioController::class, 'store']);
+Route::post('/registro', [RegistroController::class, 'store']);
+Route::post('/login', [AuthController::class, 'login']);
