@@ -33,7 +33,7 @@ class RegistroController extends Controller
             'email' => $request->email,
             'contraseña' => Hash::make($request->contraseña),
             'apodo' => $request->apodo,
-            'admin' => $request->admin
+            'admin' => $request->admin ?? false,
 
         ]);
 
