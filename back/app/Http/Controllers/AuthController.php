@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
-            'contraseña' => 'required|string|min:8',
+            'password' => 'required|string|min:8',
         ]);
 
         if ($validator->fails()) {
@@ -26,7 +26,7 @@ class AuthController extends Controller
 
         $usuario = Usuario::where('email', $request->email)->first();
 
-        if (!$usuario || !Hash::check($request->contraseña, $usuario->contraseña)) {
+        if (!$usuario || !Hash::check($request->password, $usuario->password)) {
             return response()->json(['mensaje' => 'Credenciales incorrectas'], 401);
         }
 

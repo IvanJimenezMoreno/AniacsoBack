@@ -15,7 +15,7 @@ class RegistroController extends Controller
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
             'email' => 'required|email|unique:usuarios,email',
-            'contraseña' => 'required|min:8|confirmed',
+            'password' => 'required|min:8|confirmed',
             'apodo' => 'required|string|unique:usuarios,apodo',
             'admin' => 'boolean'
         ]);
@@ -31,7 +31,7 @@ class RegistroController extends Controller
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'email' => $request->email,
-            'contraseña' => Hash::make($request->contraseña),
+            'password' => Hash::make($request->password),
             'apodo' => $request->apodo,
             'admin' => $request->admin ?? false,
 

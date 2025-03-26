@@ -11,12 +11,12 @@ class Usuario extends Model
 {
     use HasApiTokens, HasFactory;
 
-    protected $fillable = ['nombre', 'apellidos', 'email', 'contraseña', 'apodo', 'admin'];
+    protected $fillable = ['nombre', 'apellidos', 'email', 'password', 'apodo', 'admin'];
 
     protected $table = 'usuarios';
 
     protected $hidden = [
-        'contraseña'
+        'password'
     ];
 
     protected $casts = [
