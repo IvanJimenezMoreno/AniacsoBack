@@ -11,7 +11,7 @@ class Usuario extends Model
 {
     use HasApiTokens, HasFactory;
 
-    protected $fillable = ['nombre', 'apellidos', 'email', 'password', 'apodo', 'admin'];
+    protected $fillable = ['nombre', 'apellidos', 'email', 'password', 'apodo', 'admin', 'rol'];
 
     protected $table = 'usuarios';
 
@@ -23,4 +23,10 @@ class Usuario extends Model
         'email_verified_at' => 'datetime',
         'admin' => 'boolean', // Añadir este campo
     ];
+
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
 }

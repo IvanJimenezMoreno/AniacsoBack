@@ -17,7 +17,8 @@ class RegistroController extends Controller
             'email' => 'required|email|unique:usuarios,email',
             'password' => 'required|min:8|confirmed',
             'apodo' => 'required|string|unique:usuarios,apodo',
-            'admin' => 'boolean'
+            'admin' => 'boolean',
+            'rol' => 'string'
         ]);
 
         if ($validator->fails()) {
@@ -34,6 +35,7 @@ class RegistroController extends Controller
             'password' => Hash::make($request->password),
             'apodo' => $request->apodo,
             'admin' => $request->admin ?? false,
+            'rol' => $request->rol ?? "Campesinado"
 
         ]);
 
